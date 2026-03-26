@@ -1,0 +1,2 @@
+training_data = readmatrix('./training.csv');
+teseting_data = readmatrix('./');
