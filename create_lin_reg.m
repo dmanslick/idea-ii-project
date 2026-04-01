@@ -1,3 +1,3 @@
-function [lin_reg] = create_lin_reg(training_data) 
+function [lin_reg] = create_lin_reg(inputs, outputs) 
     
 end
