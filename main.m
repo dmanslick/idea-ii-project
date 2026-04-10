@@ -32,28 +32,33 @@ generalized_add_model_predictions = generalized_add_model(test_inputs);
 
 % calculate and print average RMSE's for different regressions
 
+fprintf("--------------------------------------------\n");
+fprintf("          Average Normalized RMSEs          \n");
+fprintf("--------------------------------------------\n");
+
 multivariate_lin_reg_avg_rmse = utils.calc_avg_norm_rmse(multivariate_lin_reg_predictions, test_outputs);
-fprintf("multivariate_lin_reg_avg_rmse: %.4f\n", multivariate_lin_reg_avg_rmse);
+fprintf("Multivariate Linear Regression: %.4f\n", multivariate_lin_reg_avg_rmse);
 
 multivariate_gen_lin_reg_avg_rmse = utils.calc_avg_norm_rmse(multivariate_gen_lin_reg_predictions, test_outputs);
-fprintf("multivariate_gen_lin_reg_avg_rmse: %.4f\n", multivariate_gen_lin_reg_avg_rmse);
+fprintf("Multivariate Generalized Linear Regression: %.4f\n", multivariate_gen_lin_reg_avg_rmse);
 
 guassian_proc_reg_avg_rmse = utils.calc_avg_norm_rmse(guassian_proc_reg_predictions, test_outputs);
-fprintf("guassian_proc_reg_avg_rmse: %.4f\n", guassian_proc_reg_avg_rmse);
+fprintf("Guassian Process Regression: %.4f\n", guassian_proc_reg_avg_rmse);
 
 support_vector_machine_avg_rmse = utils.calc_avg_norm_rmse(support_vector_machine_predictions, test_outputs);
-fprintf("support_vector_machine_avg_rmse: %.4f\n", support_vector_machine_avg_rmse);
+fprintf("Support Vector Machine: %.4f\n", support_vector_machine_avg_rmse);
 
 decision_tree_avg_rmse = utils.calc_avg_norm_rmse(decision_tree_predictions, test_outputs);
-fprintf("decision_tree_avg_rmse: %.4f\n", decision_tree_avg_rmse);
+fprintf("Decision Tree: %.4f\n", decision_tree_avg_rmse);
 
 ensemble_of_learners_avg_rmse = utils.calc_avg_norm_rmse(ensemble_of_learners_predictions, test_outputs);
-fprintf("ensemble_of_learners_avg_rmse: %.4f\n", ensemble_of_learners_avg_rmse);
+fprintf("Ensemble of Learners: %.4f\n", ensemble_of_learners_avg_rmse);
 
 generalized_add_model_avg_rmse = utils.calc_avg_norm_rmse(generalized_add_model_predictions, test_outputs);
-fprintf("generalized_add_model_avg_rmse: %.4f\n", generalized_add_model_avg_rmse);
+fprintf("Generalized Additive Model: %.4f\n", generalized_add_model_avg_rmse);
 
-% visualize model accuracy (lower RMSE is better)
+% visualize model accuracy using their RMSEs
+
 model_names = ["Multivariate Linear", "Multivariate GLM", "Gaussian Process", "Support Vector Machine", "Decision Tree", "Ensemble of Learners", "Generalized Additive Model"];
 avg_norm_rmses = [multivariate_lin_reg_avg_rmse, multivariate_gen_lin_reg_avg_rmse, guassian_proc_reg_avg_rmse, support_vector_machine_avg_rmse, decision_tree_avg_rmse, ensemble_of_learners_avg_rmse, generalized_add_model_avg_rmse];
 utils.graph_model_accuracy(model_names, avg_norm_rmses);
