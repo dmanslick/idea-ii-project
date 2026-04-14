@@ -1,4 +1,6 @@
-function [reg] = create_support_vector_machine(inputs, outputs) 
+function [reg, run_time] = create_support_vector_machine(inputs, outputs)
+    start_seconds = posixtime(datetime('now'));
+
     %{
         "KernelFunction", "gaussian" -> Use a curved/nonlinear model (Guassian kernel), not just a straight line.
         "KernelScale", "auto" -> Automatically pick how wide the Guassian curve is from the data.
@@ -10,5 +12,8 @@ function [reg] = create_support_vector_machine(inputs, outputs)
     NO_3_reg = fitrsvm(inputs, utils.get_output_col(outputs,"NO_3"), "KernelFunction", "gaussian", "KernelScale", "auto", "Standardize", true);
     NH4_reg = fitrsvm(inputs, utils.get_output_col(outputs, "NH4"), "KernelFunction", "gaussian", "KernelScale", "auto", "Standardize", true);
 
+    end_seconds = posixtime(datetime('now'));
+
     reg = @(x) [predict(DO_1_reg, x), predict(DO_2_reg, x), predict(DO_3_reg, x), predict(NO_3_reg, x), predict(NH4_reg, x)];
+    run_time = end_seconds - start_seconds;
 end

@@ -10,7 +10,7 @@ function graph_model_accuracy(model_names, avg_norm_rmses)
     ax.YTickLabel = sorted_names;
 
     title("Model Accuracy (Average Normalized RMSE)");
-    xlabel("Average Normalized RMSE (%)");
+    xlabel("Average Normalized RMSE");
     ylabel("Model");
     grid on;
 
