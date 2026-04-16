@@ -17,11 +17,11 @@ function [avg_norm_rmse] = calc_avg_norm_rmse(predicted_outputs, actual_outputs)
     no3_range = max(actual_outputs(:, 4)) - min(actual_outputs(:, 4));
     nh4_range = max(actual_outputs(:, 5)) - min(actual_outputs(:, 5));
 
-    do1_norm_rmse = (do1_rmse / do1_range) * 100;
-    do2_norm_rmse = (do2_rmse / do2_range) * 100;
-    do3_norm_rmse = (do3_rmse / do3_range) * 100;
-    no3_norm_rmse = (no3_rmse / no3_range) * 100;
-    nh4_norm_rmse = (nh4_rmse / nh4_range) * 100;
+    do1_norm_rmse = do1_rmse / do1_range;
+    do2_norm_rmse = do2_rmse / do2_range;
+    do3_norm_rmse = do3_rmse / do3_range;
+    no3_norm_rmse = no3_rmse / no3_range;
+    nh4_norm_rmse = nh4_rmse / nh4_range;
 
     avg_norm_rmse = (do1_norm_rmse + do2_norm_rmse + do3_norm_rmse + no3_norm_rmse + nh4_norm_rmse) / 5;
 end

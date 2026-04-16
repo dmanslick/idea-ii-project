@@ -82,5 +82,11 @@ model_names = ["Multivariate Linear", "Multivariate GLM", "Gaussian Process", "S
 avg_norm_rmses = [multivariate_lin_reg_avg_rmse, multivariate_gen_lin_reg_avg_rmse, guassian_proc_reg_avg_rmse, support_vector_machine_avg_rmse, decision_tree_avg_rmse, ensemble_of_learners_avg_rmse, generalized_add_model_avg_rmse];
 utils.graph_model_accuracy(model_names, avg_norm_rmses);
 
-% visualize NH4 actual vs predicted for selected models
-utils.graph_nh4_actual_vs_predicted(test_outputs, multivariate_lin_reg_predictions, guassian_proc_reg_predictions);
+% visualize NH4 actual vs predicted for each model separately
+utils.graph_nh4_actual_vs_predicted(test_outputs, multivariate_lin_reg_predictions, "Multivariate Linear Regression");
+utils.graph_nh4_actual_vs_predicted(test_outputs, multivariate_gen_lin_reg_predictions, "Multivariate Generalized Linear Regression");
+utils.graph_nh4_actual_vs_predicted(test_outputs, guassian_proc_reg_predictions, "Guassian Process Regression");
+utils.graph_nh4_actual_vs_predicted(test_outputs, support_vector_machine_predictions, "Support Vector Machine");
+utils.graph_nh4_actual_vs_predicted(test_outputs, decision_tree_predictions, "Decision Tree");
+utils.graph_nh4_actual_vs_predicted(test_outputs, ensemble_of_learners_predictions, "Ensemble of Learners");
+utils.graph_nh4_actual_vs_predicted(test_outputs, generalized_add_model_predictions, "Generalized Additive Model");

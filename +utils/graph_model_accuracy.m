@@ -1,5 +1,6 @@
 function graph_model_accuracy(model_names, avg_norm_rmses)
-    [sorted_rmses, order] = sort(avg_norm_rmses, "ascend");
+    percent_rmses = avg_norm_rmses * 100;
+    [sorted_rmses, order] = sort(percent_rmses, "ascend");
     sorted_names = model_names(order);
 
     figure("Name", "Model Accuracy Comparison");
@@ -8,19 +9,24 @@ function graph_model_accuracy(model_names, avg_norm_rmses)
     ax.YDir = "reverse";
     ax.YTick = 1:numel(sorted_names);
     ax.YTickLabel = sorted_names;
+    ax.FontSize = 11;
 
     title("Model Accuracy (Average Normalized RMSE)");
-    xlabel("Average Normalized RMSE");
+    xlabel("Average Normalized RMSE (%)");
     ylabel("Model");
     grid on;
 
-    x_pad = max(sorted_rmses) * 0.02;
-    if x_pad == 0
+    max_rmse = max(sorted_rmses);
+    x_pad = max_rmse * 0.03;
+    if max_rmse == 0
         x_pad = 0.1;
+        xlim([0, 1]);
+    else
+        xlim([0, max_rmse + (3 * x_pad)]);
     end
 
     for i = 1:numel(sorted_rmses)
-        text(sorted_rmses(i) + x_pad, i, sprintf("%.3f", sorted_rmses(i)), ...
-            "VerticalAlignment", "middle");
+        text(sorted_rmses(i) + x_pad, i, sprintf("%.2f%%", sorted_rmses(i)), ...
+            "VerticalAlignment", "middle", "FontWeight", "bold");
     end
 end
