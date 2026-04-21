@@ -12,4 +12,6 @@ To install the Statistics and Machine Learning Toolbox, click on the "Add-ons" b
 
 ## Running the Project
 
-To run this project, run the ```main.m``` file.
+To run the default 80% training data ratio and show residual visualizations, run the ```main.m``` file.
+
+To run the 90%, 70%, and 20% training data ratios, run the ```splits_test_runner.m``` file (MATLAB might show a prompt to add this file to its search path when ran).
