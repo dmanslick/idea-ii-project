@@ -80,7 +80,7 @@ fprintf("Generalized Additive Model: %.4f seconds\n", generalized_add_model_run_
 
 model_names = ["Multivariate Linear", "Multivariate GLM", "Gaussian Process", "Support Vector Machine", "Decision Tree", "Ensemble of Learners", "Generalized Additive Model"];
 avg_norm_rmses = [multivariate_lin_reg_avg_rmse, multivariate_gen_lin_reg_avg_rmse, guassian_proc_reg_avg_rmse, support_vector_machine_avg_rmse, decision_tree_avg_rmse, ensemble_of_learners_avg_rmse, generalized_add_model_avg_rmse];
-utils.graph_model_accuracy(model_names, avg_norm_rmses);
+utils.graph_model_accuracy(0.8, model_names, avg_norm_rmses);
 
 % visualize NH4 actual vs predicted for each model separately
 utils.graph_nh4_actual_vs_predicted(test_outputs, multivariate_lin_reg_predictions, "Multivariate Linear Regression");

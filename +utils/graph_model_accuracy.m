@@ -1,4 +1,4 @@
-function graph_model_accuracy(model_names, avg_norm_rmses)
+function graph_model_accuracy(training_ratio, model_names, avg_norm_rmses)
     percent_rmses = avg_norm_rmses * 100;
     [sorted_rmses, order] = sort(percent_rmses, "ascend");
     sorted_names = model_names(order);
@@ -11,7 +11,7 @@ function graph_model_accuracy(model_names, avg_norm_rmses)
     ax.YTickLabel = sorted_names;
     ax.FontSize = 11;
 
-    title("Model Accuracy (Average Normalized RMSE)");
+    title("Model Accuracy (Average Normalized RMSE):" + training_ratio * 10 + "% Training Data");
     xlabel("Average Normalized RMSE (%)");
     ylabel("Model");
     grid on;
